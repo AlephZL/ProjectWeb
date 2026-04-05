@@ -1,0 +1,552 @@
+@import url(https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Lato:wght@300;400;700&display=swap);
+/*Define CSS Variables for Color Scheme*/
+:root{
+    --bg-dark: #000000;
+    --bg-panel: #1a1a1a;
+    --text-main: #e8e8e8;
+    --text-muted: #999999;
+    --accent-color: #c82333;
+    --border-color: #333333;
+}
+/*Global Styles*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: none;
+}
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 110px;
+}
+body {
+    font-family: 'lato', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    line-height: 1.75;
+    overflow-x: hidden;
+}
+h1,h2,h3,h4 {
+    font-family: 'Noto Serif JP', serif;
+    color: var(--accent-color);
+    font-weight: 700;
+}
+
+/* Keyframe Animations */
+@keyframes kenBurns {
+    0% { background-size: 100%;}
+    100% { background-size: 115%;}
+}
+@keyframes floating {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px);}
+    100% { transform: translateY(0px);}    
+}
+@keyframes glowPulse {
+    0% { box-shadow: 0 0 5px rgba(200, 35, 51, 0.2); }
+    50% { box-shadow: 0 0 20px rgba(200, 35, 51, 0.6); }
+    100% { box-shadow: 0 0 5px rgba(200, 35, 51, 0.2); }   
+}
+@keyframes cahayBergerak {
+    to { background-position: 200% center;}
+}
+@keyframes glowJJ {
+    from { filter: drop-shadow(0 0 15px rgba(200, 35, 51, 0.5)); }
+    to { filter: drop-shadow(0 0 45px rgba(200, 35, 51, 0.10)); }
+}
+.animasi {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.9s ease-out;
+}
+.animasi.aktif {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Header */
+header {
+    position: relative;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    padding-bottom: 40px;
+}
+.header-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-image: linear-gradient(rgba(15, 15, 15, 0.85), rgba(15, 15, 15, 0.7)), url('Foto/Header\ Restoran\ jepang\ 1.png') ; 
+    background-position: center;
+    background-repeat: no-repeat;
+    animation: kenBurns 20s infinite alternate linear;
+    z-index: -1;
+    margin-bottom: 0px;
+    transition: opacity 1s ease-in-out;
+}
+header h1 {
+    font-size: 5vw;
+    color: var(--accent-color);
+    letter-spacing: 5px;
+    margin-bottom: 5px;
+    text-shadow: 0 10px 30px rgba(200, 35, 51, 0.4);
+    background: linear-gradient(90deg, var(--accent-color) 0%, #ff6b81 50%, var(--accent-color) 100%);
+    background-size: 200% auto;
+    color: transparent; 
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: 
+        cahayaBergerak 4s linear infinite, 
+        glowJJ 2s ease-in-out infinite alternate;
+    transition: transform 0.3s ease, letter-spacing 0.3s ease;
+}
+header h1:hover {
+    transform: scale(1.85);
+    letter-spacing: 10px;
+    animation: 
+        cahayaBergerak 1.5s linear infinite,
+        glowJJ 1s ease-in-out infinite alternate;
+}
+header p {
+    font-family: 'Noto Serif', serif;
+    font-style: italic;
+    font-size: 1.3em;
+    color: white;
+    letter-spacing: 2.5px;
+    line-height: 0.5;
+    margin-top: 0px;
+}
+
+/*Kursor kostum seperti punya Sapta*/
+.cursor-dot {
+    width: 8px; height: 8px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 10px var(--accent-color);
+}
+.cursor-outline {
+    width: 40px; height: 40px;
+    border: 1px solid var(--accent-color);
+    border-radius: 50%;
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s, height 0.2s, background-color 0.2s;
+}
+
+/*Navigation Bar*/
+#navigasi-bar {
+    background-color: rgba(15, 15, 15, 0.96);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom:1px solid var(--accent-color);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+#navigasi-bar ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#navigasi-bar ul li {
+    position: relative;
+}
+#navigasi-bar ul li a {
+    display: block;
+    padding: 20px 25px;
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 1em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: color 0.5s ease;
+}
+#navigasi-bar ul li a:hover{
+    color: var(--accent-color);
+    letter-spacing: 3px;
+    transition: letter-spacing 0.3s ease;
+}
+#navigasi-bar ul li ul {
+    position: absolute;
+    top: 78%;
+    left: 2%;
+    background-color: var(--bg-panel);
+    min-height: 10px;
+    border-top: 2px solid var(--accent-color);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.9);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(15px);
+    transition: all 0.5s ease;
+    flex-direction: column;
+    display: flex;
+    align-items: stretch;
+}
+#navigasi-bar ul li:hover ul {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY();
+}
+#navigasi-bar ul li ul li a {
+    padding: 20px 25px;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.90em;
+    display:block;
+    text-align: center;
+    box-sizing: border-box;
+}
+#navigasi-bar ul li ul li a:hover{
+    background-color: rgba(200, 35, 50, 0.2);
+    padding-left: 30px;
+
+}
+
+/*Bagian Layout*/
+.container {
+    display: flex;
+    max-width: 1250px;
+    margin: 65px auto;
+    gap: 45px;
+    padding: 0 20px;
+}
+main {
+    flex: 3;
+}
+aside {
+    flex: 1;
+    position: sticky;
+    top: 90px;
+    height: fit-content;
+}
+
+/*Konten Utama*/
+section {
+    background-color: var(--bg-panel);
+    padding: 40px;
+    border-radius: 9px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 40px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+}
+h2 {
+    font-size: 2.2em;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+    position: relative;
+}
+h2::after {
+    content:'';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background-color: var(--accent-color);
+}
+.sub-menu {
+    color: #a70000;
+    font-size: 0.9em;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+article.artikel-gambar {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+    border-bottom: 1px dashed var(--accent-color);
+}
+article.artikel-gambar:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+/*Agar gambar di kanan/kiri*/
+article.kiri {
+    flex-direction: row-reverse;
+}
+.artikel-teks {
+    flex: 1;
+}
+
+/*Untuk div gambar*/
+div.artikel-gambar {
+    flex: 1;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    transition: border-color 0.5s ease;
+}
+article.artikel-gambar {
+    flex: 1;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    transition: border-color 0.5s ease;
+}
+article.artikel-gambar:hover div.artikel-gambar {
+    border-color: var(--accent-color);
+}
+div.artikel-gambar img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+    animation: floating 3s ease-in-out infinite;
+}
+article.artikel-gambar:hover div.artikel-gambar img {
+    transform: scale(1.1);
+    animation-play-state: paused;
+}
+
+/*Bagian Galeri*/
+.Galeri-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+.Galeri-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 5px 15px rgba(200, 35, 50, 0.3);
+}
+.Galeri-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    display: block;
+}
+.Galeri-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    padding: 15px;
+    text-align: center;
+}
+.Galeri-card:hover img {
+    transform: scale(1.15);
+}
+.Galeri-card:hover .Galeri-overlay {
+    opacity: 1;
+}
+.Galeri-overlay p {
+    color: white;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+.Galeri-overlay a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-size: 0.85em;
+    border: 1px solid var(--accent-color);
+    padding: 5px 15px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+.Galeri-overlay a:hover {
+    background: var(--accent-color);
+    color: white;
+}
+
+/*Form Kontak*/
+.form-group.kontak {
+    position: relative;
+    margin-bottom: 25px;
+}
+.form-kontrol {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+    padding: 10px 0;
+    color: white;
+    font-family: 'Lato', sans-serif;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+.form-kontrol:focus {
+    outline: none;
+    border-bottom: 1px solid var(--accent-color);
+}
+.tombol-submit {
+    background-color: transparent;
+    color: var(--accent-color);
+    border: 2px solid var(--accent-color);
+    padding: 12px 30px;
+    font-size: 1em;
+    font-family: 'Lato', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    animation: glowPulse 2s infinite;
+}
+.tombol-submit:hover {
+    background-color: var(--accent-color);
+    color: white;
+    box-shadow: 0 0 20px var(--accent-color), 0 0 10px var(--accent-color), 0 0 20px var(--accent-color);
+}
+
+/*Bagian Profil*/
+.profil-card{
+    background: var(--bg-panel);
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    text-align: center;
+}
+.profil-img-container {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    margin: 0 auto 20px;
+    display: flex;
+}
+.profil-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 3px solid var(--border-color);
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: 150%;
+    background-position: center 20%;
+}
+.profil-img-container::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: -12px;
+    right: -12px;
+    bottom: -12px;
+    border-radius: 50%;
+    border: 2px dashed rgba(200, 40, 51, 0.5);
+    animation: glowPulse 2s linear infinite;
+     z-index: 1;
+}
+.Sosmed-link {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.Sosmed-link a {
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 0.9em;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+.Sosmed-link a:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+    background: rgba(200, 40, 51, 0.05);
+}
+
+/*Alert Box*/
+.pemberitahuan {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2000;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+.pemberitahuan.show {
+    opacity: 1;
+    visibility: visible;
+}
+.alert-content {
+    background: var(--bg-panel);
+    border: 1px solid var(--border-color);
+    padding: 40px;
+    border-radius: 8px;
+    max-width: 500px;
+    text-align: center;
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+    box-shadow: 0 10px 40px rgba(200, 35, 55, 0.3);
+}
+.pemberitahuan.show .alert-content {
+    transform: scale(1);
+}
+.alert-content h3 {
+    margin-bottom: 15px;
+    font-size: 1.8em;
+}
+.alert-content p {
+    margin-bottom: 25px;
+    color: var(--text-muted);
+}
+.btn-close {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+/*Footer*/
+footer {
+    background-color: #050505;
+    text-align: center;
+    padding: 30px;
+    border-top: 1px solid #222;
+    color: var(--text-muted);
+    font-size: 0.9em;
+    margin-top: 40px;
+}
+footer span {
+    color: var(--accent-color);
+}

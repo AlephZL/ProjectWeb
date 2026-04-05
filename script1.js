@@ -18,7 +18,23 @@ document.addEventListener('DOMContentLoaded', function() {
             duration: 450,
             fill: `forwards`
         });
+
+        // Agar kursor membesar saat menyentuh target
+        hoverTargets.forEach(target => {
+            target.addEventListener('mouseenter', () => {
+                cursorOutline.style.width = '60px';
+                cursorOutline.style.height = '60px';
+                cursorOutline.style.backgroundColor = 'rgba(200, 35, 51, 0.1)';
+            });
+            target.addEventListener('mouseleave', () => {
+                cursorOutline.style.width = '40px';
+                cursorOutline.style.height = '40px';
+                cursorOutline.style.backgroundColor = 'transparent';
+            });
+        });
     });
+
+    
 
     // Header slideshow seperti web Tajaq Boutique
     const headerIMG = document.querySelector('.header-background')

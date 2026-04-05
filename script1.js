@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Kursor kostum interaktif
     const cursorDot = document.querySelector('.cursor-dot');
     const cursorOutline = document.querySelector('.cursor-outline');
+    const hoverTargets = document.querySelectorAll('.hover-target');
 
     window.addEventListener('mousemove', function(e) {
         const posX = e.clientX;
@@ -34,25 +35,17 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    
 
     // Header slideshow seperti web Tajaq Boutique
     const headerIMG = document.querySelector('.header-background')
 
-    
-
     const daftarGambar = [
         "Foto/Header Restoran Jepang.png",
-        "Foto/Header Restoran Jepang 1.png",
+        "Foto/Header Restoran Jepang 1.jpg",
         "Foto/Header Restoran Jepang 2.png",
         "Foto/Header Restoran Jepang 3.png",
         "Foto/Header Restoran Jepang 4.png"
     ];
-
-    daftarGambar.forEach(namaFile => {
-        const gambarRahasia = new Image();
-        gambarRahasia.src = namaFile;
-    });
 
     let urutanGambar = 0;
 

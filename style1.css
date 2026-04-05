@@ -82,7 +82,7 @@ header {
     left: 0;
     bottom: 0;
     right: 0;
-    background-image: linear-gradient(rgba(15, 15, 15, 0.85), rgba(15, 15, 15, 0.7)), url('Foto/Header\ Restoran\ jepang\ 1.png') ; 
+    background-image: linear-gradient(rgba(15, 15, 15, 0.85), rgba(15, 15, 15, 0.7)), url('Foto/Header\ Restoran\ jepang.png') ; 
     background-position: center;
     background-repeat: no-repeat;
     animation: kenBurns 20s infinite alternate linear;

@@ -33,6 +33,11 @@ document.addEventListener('DOMContentLoaded', function() {
         "Foto/Header Restoran Jepang 4.png"
     ];
 
+    daftarGambar.forEach(namaFile => {
+        const gambarRahasia = new Image();
+        gambarRahasia.src = namaFile;
+    });
+
     let urutanGambar = 0;
 
     setInterval (() => {

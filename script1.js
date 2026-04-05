@@ -19,8 +19,9 @@ document.addEventListener('DOMContentLoaded', function() {
             duration: 450,
             fill: `forwards`
         });
+    });
 
-        // Agar kursor membesar saat menyentuh target
+    // Agar kursor membesar saat menyentuh target
         hoverTargets.forEach(target => {
             target.addEventListener('mouseenter', () => {
                 cursorOutline.style.width = '60px';
@@ -33,7 +34,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 cursorOutline.style.backgroundColor = 'transparent';
             });
         });
-    });
 
 
     // Header slideshow seperti web Tajaq Boutique

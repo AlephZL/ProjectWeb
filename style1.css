@@ -178,6 +178,7 @@ header p {
 #navigasi-bar ul li a:hover{
     color: var(--accent-color);
     letter-spacing: 3px;
+    text-shadow: 0 0 15px rgba(200, 35, 51, 0.5);
     transition: letter-spacing 0.3s ease;
 }
 #navigasi-bar ul li ul {

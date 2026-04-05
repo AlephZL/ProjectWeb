@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const daftarGambar = [
         "Foto/Header Restoran Jepang.png",
-        "Foto/Header Restoran Jepang 1.jpg",
+        "Foto/Header Restoran Jepang 1.png",
         "Foto/Header Restoran Jepang 2.png",
         "Foto/Header Restoran Jepang 3.png",
         "Foto/Header Restoran Jepang 4.png"
